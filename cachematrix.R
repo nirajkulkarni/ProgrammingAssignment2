@@ -1,40 +1,35 @@
-## Put comments here that give an overall description of what your
-## functions do
 
-## Write a short comment describing this function
 ##The first function, makecachematrix creates a function to
 
-##set the value of the vector
-##get the value of the vector
-##set the value of the mean
-##get the value of the mean
+##set the value of the matrix
+##get the value of the matrix
+##set the value of the inverse of matrix
+##get the value of the inverse of matrix
         
 makeCacheMatrix <- function(x = matrix()) {
- m <- NULL
-    set <- function(y) {
-        x <<- y
-        m <<- NULL
+m <- NULL
+set <- function(y) {
+   x <<- y
+   m <<- NULL
     }
-    get <- function() x
-    setinverse <- function(inverse) m <<- inverse
-    getinverse <- function() m
-    list(set=set, get=get, setinverse=setinverse, getinverse=getinverse)
+get <- function() x
+setinverse <- function(inverse) m <<- inverse
+getinverse <- function() m
+list(set=set, get=get, setinverse=setinverse, getinverse=getinverse)
 }
 
 
 
-## Write a short comment describing this function
+## Cachesolve returns inverse of matrix
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
-   
-    m <- x$getinverse()
+m <- x$getinverse()
     if(!is.null(m)) {
         message("getting cached data.")
         return(m)
     }
-    data <- x$get()
-    m <- solve(data)
-    x$setinverse(m)
-    m
+data <- x$get()
+m <- solve(data)
+x$setinverse(m)
+m
 }
